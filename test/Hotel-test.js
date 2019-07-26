@@ -9,13 +9,36 @@ import roomServices from '../src/data/roomServicesSampleData';
 
 describe('Hotel', () => {
 
-  let hotel;
+  let hotel, date;
   beforeEach(() => {
-    hotel = new Hotel(rooms, customers, bookings, roomServices, '2019/07/28');
+    date = '2019/07/28';
+    hotel = new Hotel(rooms, customers, bookings, roomServices, date);
   });
 
   it('should be an instance of Hotel', () => {
     expect(hotel).to.be.an.instanceOf(Hotel);
   });
 
+  it('should return all daily room service charges', () => {
+    const dailyCharges = hotel.returnTodaysRoomServiceCharges(date);
+    // console.log(charges);
+    expect(dailyCharges[0].food).to.equal('Rustic Concrete Sandwich');
+  });
+
+  it('should return all daily bookings', () => {
+    const dailyBookings = hotel.returnTodaysBookings(date);
+    // console.log(dailyBookings.length);
+    expect(dailyBookings.length).to.deep.eql(2);
+  });
+
+  it('should allow user to search for an existing customer', () => {
+    const singleCustomer = hotel.returnExistingCustomer('Noemy Little');
+    console.log(singleCustomer)
+    expect(singleCustomer.id).to.equal(5);
+  });
+
+  
+
+
+  
 });

@@ -1,13 +1,23 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
-// An example of how you import jQuery into a JS file if you use jQuery in that file
 import $ from 'jquery';
 
-// An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
 
-console.log('This is the JavaScript entry file - your code begins here.');
+let hotel;
+let date = new Date().toISOString().replace('-', '/').split('T')[0].replace('-', '/');
+
+
+// fetch - explore options for fetching 4 data sets
+// Promise.all???
+
+  fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users')
+  fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/rooms/rooms')
+  fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings')
+  fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/room-services/roomServices')
+    
+    .then(response => response.jason())
+
+$('.date-today').text(`Today is ${month} ${day} ${year}`);
+

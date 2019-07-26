@@ -1,7 +1,7 @@
 const roomServices = [
   {
     userID: 14,
-    date: "2019/07/29",
+    date: "2019/07/28",
     food: "Rustic Concrete Sandwich",
     totalCost: 14.9
   },
