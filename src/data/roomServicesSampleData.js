@@ -163,4 +163,4 @@ const roomServices = [
   }
 ]
 
-export default roomServices
+export default roomServices;

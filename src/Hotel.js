@@ -1,8 +1,12 @@
-import roomsSampleData from '../data/roomsSampleData';
+
 
 class Hotel {
-  constructor(rooms) {
-    this.rooms = roomsSampleData;
+  constructor(rooms, customers, bookings, roomServices, date) {
+    this.rooms = rooms;
+    this.customers = customers;
+    this.bookings = bookings;
+    this.roomServices = roomServices;
+    this.date = date;
   }
 }
 

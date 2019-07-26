@@ -160,6 +160,6 @@ const rooms = [
   }
 ]
 
-export default roomsSampleData; 
+export default rooms; 
 
     

@@ -1,10 +1,11 @@
 
 
-class User {
+class Customer {
   constructor(id, name) {
     this.id = id;
     this.name = name;
+    console.log(this.name)
   }
 }
 
-export default User;
+export default Customer;

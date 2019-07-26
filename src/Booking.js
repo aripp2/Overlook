@@ -1,6 +1,6 @@
 
 
-class Bookings {
+class Booking {
   constructor(userId, date, roomNumber) {
     this.userId = userId;
     this.date = date;
@@ -8,4 +8,4 @@ class Bookings {
   }
 }
 
-export default Bookings;
+export default Booking;
