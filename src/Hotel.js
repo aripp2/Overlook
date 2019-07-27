@@ -1,4 +1,4 @@
-
+import Customer from '../src/Customer';
 
 class Hotel {
   constructor(rooms, customers, bookings, roomServices, date) {
@@ -19,6 +19,30 @@ class Hotel {
 
   returnExistingCustomer(name) {
     return this.customers.find(customer => customer.name === name);
+  }
+
+  addNewCustomer(name) {
+    let id = this.customers.length += 1;
+    let addedCustomer = new Customer(id, name);
+    console.log(addedCustomer)
+    this.customers.push(addedCustomer);
+    console.log(this.customers)
+  }
+
+  findAllCustomerInfo() {
+    //error message if no results
+  }
+
+  addBooking() {
+
+  }
+
+  deleteBooking() {
+
+  }
+
+  changeBooking() {
+    
   }
 
 

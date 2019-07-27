@@ -14,10 +14,6 @@ describe('Customer', () => {
     expect(customer).to.be.an.instanceOf(Customer);
   });
 
-  it('should be able to add a new customer', => {
-    const newCustomer = customer.addNewCustomer()
-  });
-
 
 
 });
