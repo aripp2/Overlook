@@ -1,11 +1,11 @@
 
 
 class Customer {
-  constructor(id, name, bookings, orders) {
+  constructor(id, name, bookings, roomServices) {
     this.id = id;
     this.name = name;
     this.bookings = bookings || [];
-    this.orders = orders || [];
+    this.roomServices = roomServices || [];
   }
 
 

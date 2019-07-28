@@ -6,8 +6,9 @@ import RoomService from '../src/RoomService';
 class Hotel {
   constructor(rooms, bookings, roomServices, customers, date) {
     this.rooms = rooms;
+    console.log('top', this.rooms.length)
     this.bookings = this.instantiateBookings(bookings);
-    this.orders = this.instantiateRoomServices(roomServices);
+    this.roomServices = this.instantiateRoomServices(roomServices);
     this.customers = this.instantiateCustomers(customers);
     this.date = date;
     this.selectedCustomer;
@@ -15,7 +16,7 @@ class Hotel {
   }
 
   instantiateCustomers(customers) {
-   return customers.map(customer => new Customer(customer.id, customer.name, this.bookings, this.orders));
+   return customers.map(customer => new Customer(customer.id, customer.name, this.bookings, this.roomServices));
   }
 
   instantiateBookings(bookings) {
@@ -26,8 +27,8 @@ class Hotel {
     return roomServices.map(order => new RoomService(order.userID, order.date, order.food, order.totalCost));
   }
 
-  returnTodaysOrders(date) {
-    return this.orders.filter(order => order.date === date);
+  returnTodaysRoomServices(date) {
+    return this.roomServices.filter(order => order.date === date);
   }
 
   returnTodaysBookings(date) {
@@ -58,20 +59,37 @@ class Hotel {
   }
 
   addBooking(id, date, roomNum) {
-    let newBooking = new Booking(id, date, roomNum);
-    console.log(newBooking['Booking'])
-    this.bookings.push(newBooking)
-    console.log(this.bookings)
+    let addedBooking = new Booking(id, date, roomNum);
+    this.bookings.push(addedBooking);
   }
 
-  deleteBooking() {
+  deleteBooking(id, date, roomNum) {
+    this.bookings = this.bookings.filter(booking => !(booking.userID === id && booking.date === date && booking.roomNumber === roomNum));
+  }
+
+  changeBooking(id, date, roomNum, newDate, newRoom) {
+    this.deleteBooking(id, date, roomNum);
+// need to only be able to pick from available rooms
+    this.addBooking(id, newDate, newRoom);
 
   }
 
-  changeBooking() {
-
+  addOrder(id, date, food, cost) {
+    let addedOrder = new RoomService(id, date, food, cost);
+    this.roomServices.push(addedOrder);
   }
 
+  caluculateNumRoomsAvailble(date) {
+    let numBooked = this.returnTodaysBookings(date).length;
+    return this.rooms.length -= numBooked;
+  }
+
+  calucuatePercentOccupancy(date) {
+    let numBooked = this.returnTodaysBookings(date).length;
+    console.log('numBook', numBooked)
+    console.log('total', this.rooms)
+    return (this.rooms.length / numBooked).toFixed();
+  }
 
 }
 

@@ -20,9 +20,9 @@ describe('Hotel', () => {
   });
 
   it('should return all daily room service charges', () => {
-    const dailyCharges = hotel.returnTodaysOrders(date);
+    const dailyOrders = hotel.returnTodaysRoomServices(date);
     // console.log(charges);
-    expect(dailyCharges[0].food).to.equal('Rustic Concrete Sandwich');
+    expect(dailyOrders[0].food).to.equal('Rustic Concrete Sandwich');
   });
 
   it('should return all daily bookings', () => {
@@ -59,16 +59,36 @@ describe('Hotel', () => {
 
   });
 
-  it.skip('should be able to book a room', () => {
-    const newBooking = hotel.addBooking(2, date, 2)
+  it('should be able to book a room', () => {
+    hotel.addBooking(2, date, 2);
+    expect(hotel.bookings.length).to.equal(21);
   });
 
-  it.skip('should be able to unbook a room', () => {
-
+  it('should be able to unbook a room', () => {
+    hotel.deleteBooking(3, '2019/08/27', 3);
+    expect(hotel.bookings.length).to.equal(19);
   });
 
   it.skip('should be able to change a booking', () => {
-  
+  //need to work on this
+  });
+
+  it('should be able to purchase room service', () => {
+    hotel.addOrder(2, date, 'Tasty Wooden Sandwich', 11.15);
+    const updatedOrders = hotel.returnTodaysRoomServices(date);
+    // console.log('total', updatedOrders.length)
+    expect(updatedOrders.length).to.equal(3)
+  });
+
+  it('should return total num room available today', () => {
+    let numAvailable = hotel.caluculateNumRoomsAvailble(date);
+    // console.log(numAvailable);
+    expect(numAvailable).to.equal(18);
+  });
+
+  it('should return percent of rooms occupied today', () => {
+    let percentOcc = hotel.calucuatePercentOccupancy(date);
+    console.log(percentOcc);
   });
 
 
