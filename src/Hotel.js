@@ -15,7 +15,7 @@ class Hotel {
   }
 
   instantiateCustomers(customers) {
-    return customers.map(customer => new Customer(customer.id, customer.name, this.bookings, this.orders));
+   return customers.map(customer => new Customer(customer.id, customer.name, this.bookings, this.orders));
   }
 
   instantiateBookings(bookings) {
@@ -26,8 +26,8 @@ class Hotel {
     return roomServices.map(order => new RoomService(order.userID, order.date, order.food, order.totalCost));
   }
 
-  returnTodaysRoomServiceCharges(date) {
-    return this.roomServices.filter(service => service.date === date);
+  returnTodaysOrders(date) {
+    return this.orders.filter(order => order.date === date);
   }
 
   returnTodaysBookings(date) {
@@ -41,9 +41,12 @@ class Hotel {
   addNewCustomer(name) {
     let id = this.customers.length += 1;
     let addedCustomer = new Customer(id, name);
+    let clean = this.customers.filter(customer => customer !== undefined);
+    // used filter to eliminate undefined values
     // console.log(addedCustomer)
-    this.customers.push(addedCustomer);
-    // console.log(this.customers)
+    // console.log(this.customers[10]) 
+    clean.push(addedCustomer);
+    this.customers = clean;
   }
 
   findAllCustomerInfo() {

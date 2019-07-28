@@ -19,28 +19,28 @@ describe('Hotel', () => {
     expect(hotel).to.be.an.instanceOf(Hotel);
   });
 
-  it.skip('should return all daily room service charges', () => {
-    const dailyCharges = hotel.returnTodaysRoomServiceCharges(date);
+  it('should return all daily room service charges', () => {
+    const dailyCharges = hotel.returnTodaysOrders(date);
     // console.log(charges);
     expect(dailyCharges[0].food).to.equal('Rustic Concrete Sandwich');
   });
 
-  it.skip('should return all daily bookings', () => {
+  it('should return all daily bookings', () => {
     const dailyBookings = hotel.returnTodaysBookings(date);
     // console.log(dailyBookings.length);
     expect(dailyBookings.length).to.deep.eql(2);
   });
 
-  it.skip('should allow user to search for an existing customer', () => {
+  it('should allow user to search for an existing customer', () => {
     const selectedCustomer = hotel.selectExistingCustomer('Noemy Little');
     // console.log(hotel.selectedCustomer)
     expect(hotel.selectedCustomer.id).to.equal(5);
     expect(hotel.selectedCustomer.name).to.equal('Noemy Little');
   });
 
-  it.skip('should be able to add a new customer', () => {
+  it('should be able to add a new customer', () => {
     hotel.addNewCustomer('Amy Rippeto');
-    // expect(hotel.customers.length).to.equal(11);
+    expect(hotel.customers.length).to.equal(11);
   });
 
   it.skip('should return all information for given or added customer', () => {
