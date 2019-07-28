@@ -4,16 +4,7 @@
 //     // for given date?
 //   });
 
-//main
 
-
-//   it('should return total revenue for today', () => {
-
-//   });
-
-//   it('should return percent of rooms occupied today', () => {
-
-//   });
 // // customer
 //   it('should be able to create new customer', () => {
 //     // Only enter name in DOM

@@ -6,7 +6,6 @@ import RoomService from '../src/RoomService';
 class Hotel {
   constructor(rooms, bookings, roomServices, customers, date) {
     this.rooms = rooms;
-    console.log('top', this.rooms.length)
     this.bookings = this.instantiateBookings(bookings);
     this.roomServices = this.instantiateRoomServices(roomServices);
     this.customers = this.instantiateCustomers(customers);
@@ -81,14 +80,33 @@ class Hotel {
 
   caluculateNumRoomsAvailble(date) {
     let numBooked = this.returnTodaysBookings(date).length;
-    return this.rooms.length -= numBooked;
+    let totalRooms = this.rooms.length;
+    return totalRooms -= numBooked;
   }
 
   calucuatePercentOccupancy(date) {
     let numBooked = this.returnTodaysBookings(date).length;
-    console.log('numBook', numBooked)
-    console.log('total', this.rooms)
-    return (this.rooms.length / numBooked).toFixed();
+    let totalRooms = this.rooms.length;
+    return parseInt((totalRooms / numBooked).toFixed());
+  }
+
+  calculateTotalRevenue(date) {
+    let bookingsTotal = this.returnTodaysBookings(date).reduce((total, booking) => {
+      let roomCost = this.rooms.find(room => room.number === booking.roomNumber).costPerNight;
+      console.log('each', roomCost)
+      total += roomCost;
+      console.log('why', total)
+      return total;
+    }, 0);
+    console.log('book total', bookingsTotal)
+
+    let ordersTotal = this.returnTodaysRoomServices(date).reduce((total, order) => {
+      total += order.totalCost;
+      return total;
+    }, 0);
+    console.log('orders', ordersTotal)
+    return parseInt((bookingsTotal + ordersTotal).toFixed(2));
+      // return (bookingsTotal + ordersTotal).toFixed(2);
   }
 
 }

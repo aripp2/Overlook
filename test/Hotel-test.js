@@ -81,14 +81,21 @@ describe('Hotel', () => {
   });
 
   it('should return total num room available today', () => {
-    let numAvailable = hotel.caluculateNumRoomsAvailble(date);
+    const numAvailable = hotel.caluculateNumRoomsAvailble(date);
     // console.log(numAvailable);
     expect(numAvailable).to.equal(18);
   });
 
   it('should return percent of rooms occupied today', () => {
-    let percentOcc = hotel.calucuatePercentOccupancy(date);
-    console.log(percentOcc);
+    const percentOcc = hotel.calucuatePercentOccupancy(date);
+    // console.log(percentOcc);
+    expect(percentOcc).to.equal(10);
+  });
+
+  it('should return total revenue for today', () => {
+    const totalRevenue = hotel.calculateTotalRevenue(date);
+    console.log(totalRevenue)
+    expect(totalRevenue).to.equal(434.81);
   });
 
 
