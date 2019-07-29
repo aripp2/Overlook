@@ -1,11 +1,25 @@
 import chai from 'chai';
 const expect = chai.expect;
+import spies from "chai-spies";
 
 import Hotel from '../src/Hotel';
 import rooms from '../src/data/roomsSampleData';
 import bookings from '../src/data/bookingsSampleData'
 import customers from '../src/data/customersSampleData';
 import roomServices from '../src/data/roomServicesSampleData';
+import domUpdates from "../src/domUpdates";
+
+chai.use(spies);
+chai.spy.on(
+  domUpdates,
+  [ "appendTodaysOrders",
+    "appendTodaysBookings",
+    "appendNumRoomsAvailable",
+    "appendPercentOccupancy",
+    "appendRevenue"
+  ],
+  () => {}
+);
 
 describe('Hotel', () => {
 

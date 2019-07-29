@@ -26,13 +26,13 @@ class Hotel {
    return customers.map(customer => new Customer(customer.id, customer.name, this.bookings, this.roomServices));
   }
 
-  findAllCustomerInfo() {
-    let selectedBookings = this.bookings.filter(booking => booking.userID === this.selectedCustomer.id);
-    let selectedOrders = this.roomServices.filter(order => order.userID === this.selectedCustomer.id);
-    // console.log('bookings', selectedBookings)
-    // console.log('orders', selectedOrders)
-    //error message if no results
-  }
+  // findAllCustomerInfo() {
+  //   let selectedBookings = this.bookings.filter(booking => booking.userID === this.selectedCustomer.id);
+  //   let selectedOrders = this.roomServices.filter(order => order.userID === this.selectedCustomer.id);
+  //   // console.log('bookings', selectedBookings)
+  //   // console.log('orders', selectedOrders)
+  //   //error message if no results
+  // }
 
   returnTodaysRoomServices(date) {
     let dailyOrders = this.roomServices.filter(order => order.date === date);
