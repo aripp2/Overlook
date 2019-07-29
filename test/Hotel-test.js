@@ -16,7 +16,8 @@ chai.spy.on(
     "appendTodaysBookings",
     "appendNumRoomsAvailable",
     "appendPercentOccupancy",
-    "appendRevenue"
+    "appendRevenue",
+    "showSelectedCustomerName"
   ],
   () => {}
 );

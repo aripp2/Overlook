@@ -8,7 +8,7 @@ class Hotel {
     this.rooms = rooms;
     this.bookings = this.instantiateBookings(bookings);
     this.roomServices = this.instantiateRoomServices(roomServices);
-    this.customers = this.instantiateCustomers(customers);
+    this.customers = this.instantiateCustomers(customers, this.bookings, this.roomServices);
     this.date = date;
     this.selectedCustomer;
     // console.log('here', this.customers)
@@ -22,7 +22,7 @@ class Hotel {
     return roomServices.map(order => new RoomService(order.userID, order.date, order.food, order.totalCost));
   }
 
-  instantiateCustomers(customers) {
+  instantiateCustomers(customers, bookings, roomServices) {
    return customers.map(customer => new Customer(customer.id, customer.name, this.bookings, this.roomServices));
   }
 
@@ -48,6 +48,7 @@ class Hotel {
 
   selectExistingCustomer(name) {
     this.selectedCustomer = this.customers.find(customer => customer.name === name);
+    domUpdates.showSelectedCustomerName(this.selectedCustomer.name);
   }
 
   addNewCustomer(name) {

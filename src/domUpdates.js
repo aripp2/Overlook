@@ -15,17 +15,30 @@ appendNumRoomsAvailable(num) {
 },
 
 appendTodaysBookings(bookings) {
-  console.log(bookings)
+  // console.log(bookings)
   bookings.forEach(booking => {
-    $('.todays-bookings').append(`<li>Customer ${booking.userID} in Room Number ${booking.roomNumber}</li>`);
+    $('.todays-bookings').append(
+      `<tr>
+        <td>${booking.userID}</td>
+        <td>${booking.roomNumber}</td>
+      </tr>`);
   })
 },
 
 appendTodaysOrders(orders) {
-  console.log(orders)
+  // console.log(orders)
   orders.forEach(order => {
-    $('.todays-orders').append(`<li>Customer ${order.userID} is getting a ${order.food} for $${order.totalCost}</li>`);
+    $('.todays-orders').append(
+      `<tr>
+        <td>${order.userID}</td>
+        <td>${order.food}</td>
+        <td>$${order.totalCost}</td>
+      </tr>`);
   })
+},
+
+showSelectedCustomerName(name) {
+  $('.selected-customer').text(name);
 },
 
 

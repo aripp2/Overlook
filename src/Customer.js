@@ -9,6 +9,7 @@ class Customer {
   }
 
   findCustomerBookings(id, bookings) {
+    
     return bookings.filter(booking => booking.userID === id);
   }
 // filter is not working here???

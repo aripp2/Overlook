@@ -14,6 +14,7 @@
     <header>
       <h3>The Overlook Hotel</h3>
       <h4 class="date-today"></h4>
+      <h4 class="selected-customer"></h4>
     </header>
 
     <main id="tabs-container">
@@ -28,9 +29,20 @@
         <h4 class="percent-occupancy"></h4>
         <h4 class="rooms-available"></h4>
         <h4 class="daily-orders">Today's Room Service Orders:</h4>
-        <ol class="todays-orders"></ol>
+        <table class="todays-orders">
+          <tr>
+            <th>Customer ID</th>
+            <th>Food Item</th>
+            <th>Total Cost</th>
+          </tr>
+        </table>
         <h4 class="daily-bookings">Today's Bookings:</h4>
-        <ol class="todays-bookings"></ol>
+        <table class="todays-bookings">
+          <tr>
+            <th>Customer ID</th>
+            <th>Room Number</th>
+          </tr>
+        </table>
       </article>
       <article id="customer-tab" >
         
