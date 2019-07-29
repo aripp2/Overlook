@@ -17,7 +17,7 @@ chai.spy.on(
     "appendNumRoomsAvailable",
     "appendPercentOccupancy",
     "appendRevenue",
-    "showSelectedCustomerName"
+    "showSelectedCustomer"
   ],
   () => {}
 );
@@ -47,7 +47,7 @@ describe('Hotel', () => {
   });
 
   it('should allow user to search for an existing customer', () => {
-    const selectedCustomer = hotel.selectExistingCustomer('Noemy Little');
+    const selectedCustomer = hotel.selectExistingCustomer(5);
     // console.log(hotel.selectedCustomer)
     expect(hotel.selectedCustomer.id).to.equal(5);
     expect(hotel.selectedCustomer.name).to.equal('Noemy Little');
@@ -55,15 +55,14 @@ describe('Hotel', () => {
 
   it('should be able to add a new customer', () => {
     hotel.addNewCustomer('Amy Rippeto');
+    console.log(hotel.customers[10])
     expect(hotel.customers.length).to.equal(11);
   });
 
   it.skip('should return all information for given or added customer', () => {
-    hotel.selectExistingCustomer('Noemy Little');
+    hotel.selectExistingCustomer(5);
     hotel.findAllCustomerInfo();
     // expect(hotel.)    
-
-
 
     //append to appropriate tabs, not changing the main tab
 

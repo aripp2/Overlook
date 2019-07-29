@@ -19,10 +19,10 @@
 
     <main id="tabs-container">
       <ul class="tabs">
-        <li class="tab"><a herf="#main-tab">Main</a></li>
-        <li class="tab"><a herf="#customer-tab">Customer</a></li>
-        <li class="tab"><a herf="#rooms-tab">Rooms</a></li>
-        <li class="tab"><a herf="#orders-tab">Orders</a></li>
+        <li class="tab"><a href="#main-tab">Main</a></li>
+        <li class="tab"><a href="#customer-tab">Customer</a></li>
+        <li class="tab"><a href="#rooms-tab">Rooms</a></li>
+        <li class="tab"><a href="#orders-tab">Orders</a></li>
       </ul>
       <article id="main-tab" >
         <h4 class="total-revenue"></h4>
@@ -45,7 +45,12 @@
         </table>
       </article>
       <article id="customer-tab" >
-        
+        <label for="customer-search">Search for Customer</label>
+        <input class="customer-search" type="number" placeholder="Enter Customer ID">
+        <button class="search-customer-btn">Search</button>
+        <label for="add-customer">Add New Customer</label>
+        <input class="add-customer" type="text" placeholder="Enter First & Last Name">
+        <button class="add-customer-btn">Add</button>
       </article>
       <article id="rooms-tab" >
         

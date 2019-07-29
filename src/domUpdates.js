@@ -30,15 +30,20 @@ appendTodaysOrders(orders) {
   orders.forEach(order => {
     $('.todays-orders').append(
       `<tr>
-        <td>${order.userID}</td>
+        <td>${order.userId}</td>
         <td>${order.food}</td>
         <td>$${order.totalCost}</td>
       </tr>`);
   })
 },
 
-showSelectedCustomerName(name) {
-  $('.selected-customer').text(name);
+showSelectedCustomer(customer) {
+  // console.log(customer)
+  if (customer === undefined) {
+    // error No results found
+  } else {
+  $('.selected-customer').text(customer.name);
+  }
 },
 
 

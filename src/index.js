@@ -6,6 +6,7 @@ import './css/base.scss';
 import './images/turing-logo.png'
 
 import Hotel from '../src/Hotel';
+import domUpdates from "../src/domUpdates";
 // import Customer from '../src/Customer';
 // import Booking from '../src/Booking';
 // import RoomService from '../src/RoomService';
@@ -28,15 +29,25 @@ Promise.all([roomsData, bookingsData, roomServicesData, customersData])
 function createHotel(rooms, bookings, roomServices, customers, date) {
   hotel = new Hotel(rooms, bookings, roomServices, customers, date);
   $('.date-today').text(date);
-  hotel.calculateTotalRevenue(date);
-  hotel.calucuatePercentOccupancy(date);
   hotel.returnTodaysBookings(date);
   hotel.returnTodaysRoomServices(date);
+  hotel.calculateTotalRevenue(date);
+  hotel.calucuatePercentOccupancy(date);
   hotel.caluculateNumRoomsAvailble(date);
 }
 
+$('.search-customer-btn').click(() => {
+  let id = $('.customer-search').val();
+  id = parseInt(id);
+  $('.customer-search').val('');
+  hotel.selectExistingCustomer(id);
+  domUpdates.showSelectedCustomer(hotel.selectedCustomer);
+})
 
-// $(document).ready(function () {
+
+
+
+// $(document).ready(() => {
 //   $('#tabs-container').tabs();
 // });
 
