@@ -1,8 +1,8 @@
 
 
 class Booking {
-  constructor(userId, date, roomNumber) {
-    this.userId = userId;
+  constructor(userID, date, roomNumber) {
+    this.userID = userID;
     this.date = date;
     this.roomNumber = roomNumber;
   }

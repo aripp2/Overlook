@@ -4,16 +4,52 @@
     <title>Overlook Hotel</title>
   </head>
   <body>
+
+    <section class="splash">
+      <h1>Welcome to the Overlook Hotel</h1>
+      <h2>Management System</h2>
+      <button class="enter-btn">Enter</button>
+    </section>
+
     <header>
-      <h1>The Overlook Hotel</h1>
-      <h2 class="date-today"></h2>
+      <h3>The Overlook Hotel</h3>
+      <h4 class="date-today"></h4>
     </header>
 
-    
+    <main id="tabs-container">
+      <ul class="tabs">
+        <li class="tab"><a herf="#main-tab">Main</a></li>
+        <li class="tab"><a herf="#customer-tab">Customer</a></li>
+        <li class="tab"><a herf="#rooms-tab">Rooms</a></li>
+        <li class="tab"><a herf="#orders-tab">Orders</a></li>
+      </ul>
+      <article id="main-tab" >
+        <h4 class="total-revenue"></h4>
+        <h4 class="percent-occupancy"></h4>
+        <h4 class="rooms-available"></h4>
+        <h4 class="daily-orders">Today's Room Service Orders:</h4>
+        <ol class="todays-orders"></ol>
+        <h4 class="daily-bookings">Today's Bookings:</h4>
+        <ol class="todays-bookings"></ol>
+      </article>
+      <article id="customer-tab" >
+        
+      </article>
+      <article id="rooms-tab" >
+        
+      </article>
+      <article id="orders-tab">
+        
+      </article>
+    </main>
     
 
   
-
+  <footer>
+    <h5>Established 2019</h5>
+    <!-- include social media links? -->
+  </footer>
     <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
+   <!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
   </body>
 </html>
