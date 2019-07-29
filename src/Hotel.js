@@ -1,7 +1,7 @@
 import Customer from '../src/Customer';
 import Booking from '../src/Booking';
 import RoomService from '../src/RoomService';
-// import domUpdates from '../scr/domUpdates';
+import domUpdates from '../src/domUpdates';
 
 class Hotel {
   constructor(rooms, bookings, roomServices, customers, date) {
@@ -14,10 +14,6 @@ class Hotel {
     // console.log('here', this.customers)
   }
 
-  instantiateCustomers(customers) {
-   return customers.map(customer => new Customer(customer.id, customer.name, this.bookings, this.roomServices));
-  }
-
   instantiateBookings(bookings) {
     return bookings.map(booking => new Booking(booking.userID, booking.date, booking.roomNumber));
   }
@@ -26,12 +22,28 @@ class Hotel {
     return roomServices.map(order => new RoomService(order.userID, order.date, order.food, order.totalCost));
   }
 
+  instantiateCustomers(customers) {
+   return customers.map(customer => new Customer(customer.id, customer.name, this.bookings, this.roomServices));
+  }
+
+  findAllCustomerInfo() {
+    let selectedBookings = this.bookings.filter(booking => booking.userID === this.selectedCustomer.id);
+    let selectedOrders = this.roomServices.filter(order => order.userID === this.selectedCustomer.id);
+    // console.log('bookings', selectedBookings)
+    // console.log('orders', selectedOrders)
+    //error message if no results
+  }
+
   returnTodaysRoomServices(date) {
-    return this.roomServices.filter(order => order.date === date);
+    let dailyOrders = this.roomServices.filter(order => order.date === date);
+    domUpdates.appendTodaysOrders(dailyOrders);
+    return dailyOrders;
   }
 
   returnTodaysBookings(date) {
-    return this.bookings.filter(booking => booking.date === date);
+    let dailyBookings = this.bookings.filter(booking => booking.date === date);
+    domUpdates.appendTodaysBookings(dailyBookings);
+    return dailyBookings;
   }
 
   selectExistingCustomer(name) {
@@ -49,13 +61,6 @@ class Hotel {
     this.customers = clean;
   }
 
-  findAllCustomerInfo() {
-    let selectedBookings = this.bookings.filter(booking => booking.userID === this.selectedCustomer.id);
-    let selectedOrders = this.roomServices.filter(order => order.userID === this.selectedCustomer.id);
-    // console.log('bookings', selectedBookings)
-    // console.log('orders', selectedOrders)
-    //error message if no results
-  }
 
   addBooking(id, date, roomNum) {
     let addedBooking = new Booking(id, date, roomNum);
@@ -81,49 +86,40 @@ class Hotel {
   caluculateNumRoomsAvailble(date) {
     let numBooked = this.returnTodaysBookings(date).length;
     let totalRooms = this.rooms.length;
-    return totalRooms -= numBooked;
+    let available = totalRooms -= numBooked;
+    domUpdates.appendNumRoomsAvailable(available);
+    return available;
   }
 
   calucuatePercentOccupancy(date) {
     let numBooked = this.returnTodaysBookings(date).length;
     let totalRooms = this.rooms.length;
-    return parseInt((totalRooms / numBooked).toFixed());
+    let percent = +(totalRooms / numBooked).toFixed();
+    domUpdates.appendPercentOccupancy(percent);
+    return percent;
   }
 
   calculateTotalRevenue(date) {
     let bookingsTotal = this.returnTodaysBookings(date).reduce((total, booking) => {
       let roomCost = this.rooms.find(room => room.number === booking.roomNumber).costPerNight;
-      console.log('each', roomCost)
+      // console.log('each', roomCost)
       total += roomCost;
-      console.log('why', total)
+      // console.log('why', total)
       return total;
     }, 0);
-    console.log('book total', bookingsTotal)
+    // console.log('book total', bookingsTotal)
 
     let ordersTotal = this.returnTodaysRoomServices(date).reduce((total, order) => {
       total += order.totalCost;
       return total;
     }, 0);
-    console.log('orders', ordersTotal)
-    return parseInt((bookingsTotal + ordersTotal).toFixed(2));
-      // return (bookingsTotal + ordersTotal).toFixed(2);
+    // why am I getting crazy long numbers??
+    // console.log('orders', ordersTotal)
+    let totalRevenue = +(bookingsTotal + ordersTotal).toFixed(2);
+    domUpdates.appendRevenue(totalRevenue);
+    return totalRevenue;
   }
 
 }
 
 export default Hotel;
-
-
-
-
-
-
-
-    // console.log(this.roomServices)
-    // console.log(date)
-    // this.roomServices.reduce((total, service) => {
-    //     if (service.date === date) {
-    //       total += service.totalCost;
-    //     }
-    //   return total;
-    // }, 0);

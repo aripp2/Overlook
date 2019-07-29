@@ -94,7 +94,7 @@ describe('Hotel', () => {
 
   it('should return total revenue for today', () => {
     const totalRevenue = hotel.calculateTotalRevenue(date);
-    console.log(totalRevenue)
+    // console.log(totalRevenue)
     expect(totalRevenue).to.equal(434.81);
   });
 
