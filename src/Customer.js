@@ -9,20 +9,13 @@ class Customer {
   }
 
   findCustomerBookings(id, bookings) {
-    return bookings.filter(booking => booking.userID === id);
+    let customerBookings = bookings.filter(booking => booking.userID === id);
+    return customerBookings;
   }
-// filter is not working here???
   findCustomerOrders(id, roomServices) {
-    return roomServices.filter(order => order.userID === id);
+    return roomServices.filter(order => order.userId === id);
   }
 
-  //   findAllCustomerInfo() {
-  //   let selectedBookings = this.bookings.filter(booking => booking.userID === this.selectedCustomer.id);
-  //   let selectedOrders = this.roomServices.filter(order => order.userID === this.selectedCustomer.id);
-  //   // console.log('bookings', selectedBookings)
-  //   // console.log('orders', selectedOrders)
-  //   //error message if no results
-  // }
 }
 
 export default Customer;
