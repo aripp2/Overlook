@@ -36,18 +36,29 @@ function createHotel(rooms, bookings, roomServices, customers, date) {
   hotel.caluculateNumRoomsAvailble(date);
 }
 
+$(document).ready(() => {
+  $('.main-content').hide();
+})
+
+$('.enter-btn').click(() => {
+  $('.splash').fadeOut(3000);
+  $('.main-content').fadeIn(5000);
+})
+
 $('.search-customer-btn').click(() => {
   let id = $('.customer-search').val();
   id = parseInt(id);
   $('.customer-search').val('');
   hotel.selectExistingCustomer(id);
+  console.log(hotel.selectedCustomer)
   domUpdates.showSelectedCustomer(hotel.selectedCustomer);
+  domUpdates.appendSelectedCustomerBookings(hotel.selectedCustomer, hotel.rooms);
+  domUpdates.appendSelectedCustomerOrders(hotel.selectedCustomer, hotel.rooms)
 })
 
 
 
+// $('.tab').each(() => {
 
-// $(document).ready(() => {
-//   $('#tabs-container').tabs();
-// });
+// })
 

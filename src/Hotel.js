@@ -31,7 +31,6 @@ class Hotel {
   returnTodaysRoomServices(date) {
     this.dailyOrders = this.roomServices.filter(order => order.date === date);
     domUpdates.appendTodaysOrders(this.dailyOrders);
-    // console.log('orders', dailyOrders)
   }
 
   returnTodaysBookings(date) {
@@ -41,8 +40,6 @@ class Hotel {
 
   selectExistingCustomer(id) {
     this.selectedCustomer = this.customers.find(customer => customer.id === id);
-    // return this.selectedCustomer;
-    // domUpdates.showSelectedCustomer(this.selectedCustomer);
   }
 
   addNewCustomer(name) {
@@ -51,7 +48,6 @@ class Hotel {
     let clean = this.customers.filter(customer => customer !== undefined);
     // used filter to eliminate undefined values
     // console.log(addedCustomer)
-    // console.log(this.customers[10]) 
     clean.push(addedCustomer);
     this.customers = clean;
   }
@@ -95,22 +91,17 @@ class Hotel {
   }
 
   calculateTotalRevenue(date) {
-    console.log(this.dailyBookings);
     let bookingsTotal = this.dailyBookings.reduce((total, booking) => {
       let roomCost = this.rooms.find(room => room.number === booking.roomNumber).costPerNight;
-      // console.log('each', roomCost)
       total += roomCost;
-      // console.log('why', total)
       return total;
     }, 0);
-    // console.log('book total', bookingsTotal)
 
     let ordersTotal = this.dailyOrders.reduce((total, order) => {
       total += order.totalCost;
       return total;
     }, 0);
-    // why am I getting crazy long numbers??
-    // console.log('orders', ordersTotal)
+  
     let totalRevenue = +(bookingsTotal + ordersTotal).toFixed(2);
     domUpdates.appendRevenue(totalRevenue);
     return totalRevenue;

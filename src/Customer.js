@@ -9,7 +9,6 @@ class Customer {
   }
 
   findCustomerBookings(id, bookings) {
-    // console.log('bookings', bookings)
     let customerBookings = bookings.filter(booking => booking.userID === id);
     return customerBookings;
   }
