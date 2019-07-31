@@ -2,9 +2,6 @@ import $ from 'jquery';
 
 import './css/base.scss';
 
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png'
-
 import Hotel from '../src/Hotel';
 import domUpdates from "../src/domUpdates";
 // import Customer from '../src/Customer';
@@ -57,8 +54,4 @@ $('.search-customer-btn').click(() => {
 })
 
 
-
-// $('.tab').each(() => {
-
-// })
 
