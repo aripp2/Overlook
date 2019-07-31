@@ -21,8 +21,9 @@ appendTodaysBookings(bookings) {
       `<tr>
         <td>${booking.userID}</td>
         <td>${booking.roomNumber}</td>
-        <td><button class="cancel-booking">Cancel</button></td>
-        <td><button class="change-booking">Change</button></td>
+        <td><button class="cancel-booking-btn">Cancel</button></td>
+        <td><button class="change-booking-btn">Change</button></td>
+        <td><button class="add-food-btn">Order</button></td>
       </tr>`);
   })
 },

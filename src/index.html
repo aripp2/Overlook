@@ -2,6 +2,8 @@
 <html lang="en-US">
   <head>
     <title>Overlook Hotel</title>
+    <link href="https://fonts.googleapis.com/css?family=Cinzel:400,900|Roboto&display=swap" rel="stylesheet">
+
   </head>
   <body>
     <section class="splash">
@@ -11,7 +13,7 @@
     </section>
     <main class="main-content">
       <header>
-        <h3>The Overlook Hotel</h3>
+        <h1>The Overlook Hotel</h1>
         <h4 class="date-today"></h4>
         <h4 class="selected-customer">  </h4>
       </header>
@@ -19,7 +21,7 @@
       <section id="tabs-container">
         <ul class="tabs">
           <li class="tab"><a href=" #main-tab">Main</a></li>
-          <li class="tab"><a href=" #customer-tab">Customer</a></  li>
+          <li class="tab"><a href=" #customer-tab">Customer</a></li>
           <li class="tab"><a href=" #rooms-tab">Rooms</a></li>
           <li class="tab"><a href=" #orders-tab">Orders</a></li>
         </ul>
@@ -42,17 +44,21 @@
               <th>Room Number</th>
               <th>Cancel Booking</th>
               <th>Change Booking</th>
+              <th>Add Room Service</th>
             </tr>
           </table>
         </article>
         <article id="customer-tab" class="content">
-          <label for="customer-search">Search for Customer</label>
-          <input class="customer-search" type="number" placeholder="  Enter Customer ID">
-          <button class="search-customer-btn">Search</button>
-          <label for="add-customer">Add New Customer</label>
+          <form class="search-customers">
+            <label for="customer-search">Search for Customer</label>
+            <input class="customer-search" type="number" placeholder="Enter Customer ID">
+            <button class="search-customer-btn">Search</button>
+          </form>
+         <!--  <label for="add-customer">Add New Customer</label>
           <input class="add-customer" type="text" placeholder="Enter  First & Last Name">
-          <button class="add-customer-btn">Add</button>
+          <button class="add-customer-btn">Add</button> -->
           <h4 class="customer-info"></h4>
+          <h4>All Bookings for Selected Customer:</h4>
           <table class="selected-bookings">
             <tr>
               <th>Date</th>
@@ -71,7 +77,7 @@
             
           </article>
           <article id="orders-tab" class="content">
-    
+            <h4>All Room Service Orders for Selected Customer:</h4>
             <table class="selected-orders">
               <tr>
                 <th>Date</th>

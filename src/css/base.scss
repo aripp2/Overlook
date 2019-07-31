@@ -1,50 +1,119 @@
 @import 'normalize';
 
-$primary-background: lightblue;
+$primary-background: #94978E;
+$main-color: #313266;
+$header-font: 'Cinzel', serif;
+$body-font: 'Roboto', sans-serif;
 
 body {
   background-color: $primary-background;
+  color: $main-color;
 }
 
 .splash {
   height: 100vh;
+  margin: 50px;
+  font-family: $header-font;
   background-image: url(https://images.unsplash.com/photo-1559779433-2131953b86d1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2767&q=80);
   background-size: cover;
 }
 
+h1 {
+  margin: 20px 0 0 20px;
+  width: 60%;
+  font-size: 4em;
+}
 
+h2 {
+  font-size: 2em;
+  margin: 20px 0 0 20px;
+}
+
+.enter-btn {
+  font-size: 1.5em;
+  margin: 30px 0 0 20px;
+}
+
+h3 {
+  font-size: 3em;
+}
+
+h4 {
+  font-size: 2.5em;
+  font-family: $header-font; 
+  font-weight: 400;
+  margin-left: 20px;
+}
 
 header {
+  font-family: $header-font; 
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
   padding: 20px;
 }
 
-
-
 .tabs {
+  margin: 0 auto;
   list-style: none;
   display: flex;
-  justify-content: space-around;
-  border: 2px solid black;
+  justify-content: space-between;
 
+  // border: 2px solid black;
+}
+
+.tab {
+  height: 30px;
+  width: 25%;
+  font-family: $header-font;
+  font-size: 1.5em;
+  text-align: center;
+  border-radius-top-left: 10%;
+  border-radius-top-right: 10%;
 }
 
 table tr td {
-  border: 2px solid black;
+  font-family: $body-font;
+  border: 2px solid $main-color;
   text-align: center;
 }
 
+table {
+  width: 80%;
+  margin: 0 auto;
+}
+
 td {
+  color: $main-color;
   padding: 5px;
 }
 
-#main-tab {
-  border: 2px solid black;
+.content {
+  margin: 5%;
 }
 
 th {
+  font-family: $header-font;
   background-color: white;
-  border: 2px solid black;
+  border: 2px solid $main-color;
   padding: 10px;
+}
+
+.search-customers {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-size: 1.2em;
+  width: 40%;
+}
+
+.customer-search {
+  margin: 10px 0;
+}
+
+footer {
+  font-family: $header-font;
+  font-size: 2em;
+  text-align: center;
 }
